@@ -40,6 +40,7 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -72,6 +73,7 @@ export const login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
 export const reset = async (req, res) => {
   try {
     const { email } = req.body;
@@ -87,7 +89,7 @@ export const reset = async (req, res) => {
     const user = checkUser[0][0];
     const resetToken = await bcrypt.genSalt(10);
     const now = new Date();
-    const offset = 5.5 * 60 * 60 * 1000
+    const offset = 5.5 * 60 * 60 * 1000;
     const msTime = new Date(now.getTime() + offset + 1800000);
     const resetTokenExpires = msTime
       .toISOString()
