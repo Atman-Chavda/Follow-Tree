@@ -1,0 +1,1 @@
+Follow tree is platform for creators where in today's every platform takes cut from creators money here they can have all the money they deserve NO CUTS GONNA BE TAKEN HERE. People can donate money to their favorite creator and support them directly.
