@@ -62,8 +62,8 @@ export const login = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Invalid password" });
     }
-    const token = createSecretToken(email);
-    res.cookie("token", token, {
+    const token = createSecretToken(checkUser[0][0].id);
+    await res.cookie("token", token, {
       withCredentials: true,
       httpOnly: true,
     });
@@ -115,15 +115,15 @@ export const reset = async (req, res) => {
       from: process.env.EMAIL_SEND,
       to: user.email,
       subject: "Follow tree Password Reset",
-      text: `Click on the link to reset your password: http://localhost:3000/reset/${resetToken}`,
+      text: `Click on the link to reset your password: http://localhost:5555/user/reset/${resetToken}`,
     };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log(`Email sent: ${info.response}`);
-      }
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log(`Email sent: ${info.response}`);
+    //   }
+    // });
     res
       .status(200)
       .json({ success: true, message: "Reset link sent to your email" });
